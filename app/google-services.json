@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "627243260693",
+    "firebase_url": "https://sensord-ebcea.firebaseio.com",
+    "project_id": "sensord-ebcea",
+    "storage_bucket": "sensord-ebcea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627243260693:android:579653b03dd89e1a5e671c",
+        "android_client_info": {
+          "package_name": "com.example.runningman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627243260693-fbe4ishk324onu8ueo6400e4k644o1el.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.runningman",
+            "certificate_hash": "8a6782dd769c133a4d2cc072200beede8eb8d5ad"
+          }
+        },
+        {
+          "client_id": "627243260693-a6tc5ud2inmb0bl25hn39g8i7n4tuubb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFFNFu9EVuIzhCR7v-256IvurPftVUmFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627243260693-a6tc5ud2inmb0bl25hn39g8i7n4tuubb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

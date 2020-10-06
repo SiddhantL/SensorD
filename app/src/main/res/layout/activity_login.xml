@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".LoginActivity">
+    <EditText
+        android:id="@+id/EmailEdittext"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/PasswordeditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/holo_red_light"
+        android:fontFamily="@font/montserrat"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
+
+    <EditText
+        android:id="@+id/PasswordeditText"
+        android:layout_width="259dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/loginbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/holo_red_light"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF" />
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView15"
+        android:layout_alignEnd="@+id/EmailEdittext"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/holo_red_light"
+        android:fontFamily="@font/montserrat"
+        android:text="SIGN IN"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="33dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="67dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="225dp"
+            android:layout_height="85dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/splashy3" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="47dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Skip For Now"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Register"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

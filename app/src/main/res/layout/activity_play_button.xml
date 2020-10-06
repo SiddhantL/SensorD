@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff1201"
+    tools:context=".PlayButton">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:id="@+id/texts">
+
+        <TextView
+            android:id="@+id/sensor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/righteous_regular"
+            android:text="Sensor"
+            android:textColor="#e0e0e0"
+            android:textSize="65dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/righteous_regular"
+            android:text="'D"
+            android:id="@+id/sensord"
+            android:layout_toRightOf="@+id/sensor"
+            android:textColor="#000"
+            android:textSize="65dp" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/logo"
+        android:src="@drawable/logos"
+        android:layout_marginTop="20dp"
+        />
+    <ImageView
+        android:id="@+id/playbtn"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="333dp"
+        app:srcCompat="@drawable/play4" />
+</RelativeLayout>
