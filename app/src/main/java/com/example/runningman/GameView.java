@@ -36,7 +36,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int frameWidth = 140, frameHeight = 274;
     private int frameCount = 1;
     private int currentFrame = 0;
-    public Boolean lcar=false,ccar=false,rcar=false,allocate1=false,allocate2=false,allocate3=false,control=true;
+    public Boolean lcar=false,ccar=false,rcar=false,allocate1=false,allocate2=false,allocate3=false;
     public static Boolean crash=false;
     private float x = 0, enemyyl = -1,enemmyc=-1,enemmyr=-1,pav=0;
     private int speeda=14,speedb=16,speedc=18;

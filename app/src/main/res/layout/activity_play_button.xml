@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/righteous_regular"
             android:text="Sensor"
-            android:textColor="#e0e0e0"
-            android:textSize="65dp" />
+            android:textColor="#fff"
+            android:textSize="40dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:id="@+id/sensord"
             android:layout_toRightOf="@+id/sensor"
             android:textColor="#000"
-            android:textSize="65dp" />
+            android:textSize="40dp" />
     </RelativeLayout>
     <ImageView
         android:layout_width="wrap_content"

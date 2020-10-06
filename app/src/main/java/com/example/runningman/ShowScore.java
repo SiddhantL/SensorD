@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +28,7 @@ import java.util.Comparator;
 
 public class ShowScore extends AppCompatActivity {
 RecyclerView rv;
+MediaPlayer mp;
 ArrayList<ListData> listData;
 FirebaseAdapter adapter;
 TextView hscore;
@@ -32,6 +37,18 @@ String high="";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_score);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ImageView play=findViewById(R.id.retry);
+        mp= MediaPlayer.create(this,R.raw.click);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp.start();
+                startActivity(new Intent(ShowScore.this,Select.class));
+                finish();
+            }
+        });
         Intent intent = getIntent();
         final String str = intent.getStringExtra("score");
         TextView scoretv = findViewById(R.id.textView);

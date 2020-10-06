@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:elevation="5dp"
         android:src="@drawable/logos" />
 
@@ -26,6 +26,6 @@
         android:fontFamily="@font/righteous_regular"
         android:text="From\nSNL Tech"
         android:textAlignment="center"
-        android:textColor="#F1EEEE"
+        android:textColor="#fff"
         android:textSize="30dp" />
 </RelativeLayout>

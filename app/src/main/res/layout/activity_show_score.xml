@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F44336"
     tools:context=".ShowScore">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
+    <ImageView
+        android:id="@+id/retry"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/montserrat"
-        android:text="Highscore Loading..."
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="30dp" />
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:elevation="5dp"
+        app:srcCompat="@drawable/play4" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,9 +31,21 @@
         android:textColor="#050505"
         android:textSize="35dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat"
+        android:text="Highscore Loading..."
+        android:textColor="#fff"
+        android:textSize="30dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/retry"
         android:layout_below="@id/textView2" />
 </RelativeLayout>
