@@ -47,4 +47,30 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="333dp"
         app:srcCompat="@drawable/play4" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/circular_rel"
+        android:fontFamily="@font/righteous_regular"
+        android:text="Tips:\n Tap screen to change directions"
+        android:textAlignment="center"
+        android:textColor="#ff1201"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/texts"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat"
+        android:text="My Highscore: -"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
 </RelativeLayout>

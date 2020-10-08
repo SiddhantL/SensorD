@@ -46,7 +46,8 @@ TextView SignUpText,skip;
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SignUpText=(TextView)findViewById(R.id.textView15);
 loginbtn=(Button)findViewById(R.id.loginbtn);
-skip=(TextView)findViewById(R.id.textView14);
+loginbtn.setEnabled(true);
+skip=(TextView)findViewById(R.id.textView14l);
 skip.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -82,6 +83,7 @@ SignUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Perform Login Operation
+                loginbtn.setEnabled(false);
                userEmailString=userEmailEdit.getText().toString().trim();
                 userPasswordString=UserPasswordEdit.getText().toString().trim();
                 if (!TextUtils.isEmpty(userEmailString) && !TextUtils.isEmpty(userPasswordString)){
@@ -101,6 +103,7 @@ SignUpText.setOnClickListener(new View.OnClickListener() {
                                 }
                                 }else {
                                 Toast.makeText(LoginActivity.this, "User Login Failed", Toast.LENGTH_LONG).show();
+                                loginbtn.setEnabled(true);
                             }
                         }
                     });

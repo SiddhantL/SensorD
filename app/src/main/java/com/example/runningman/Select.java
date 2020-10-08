@@ -48,7 +48,7 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
         pull_to_refresh = (PullToRefresh)findViewById(R.id.pull_to_refresh);
         listView =  (ListView)findViewById(R.id.list);
         not_found =  (Button) findViewById(R.id.not_in_list);
-
+not_found.setEnabled(true);
         pull_to_refresh.setListView(listView);
         pull_to_refresh.setOnRefreshListener(this);
         pull_to_refresh.setSlide(500);
@@ -70,8 +70,14 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
         not_found.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Select.this, Scan.class);
-                startActivity(i);
+                if (listView.getAdapter() != null) {
+                    if (!listView.getAdapter().isEmpty()) {
+                        Intent i = new Intent(Select.this, Chat.class);
+                        i.putExtra("pos", 0);
+                        startActivity(i);
+                        finish();
+                    }
+                }
             }
         });
 
@@ -123,7 +129,6 @@ public class Select extends Activity implements PullToRefresh.OnRefreshListener 
 
         listView.setAdapter(adapter);
 
-        not_found.setEnabled(true);
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {

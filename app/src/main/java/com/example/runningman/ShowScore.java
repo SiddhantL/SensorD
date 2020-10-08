@@ -26,13 +26,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ShowScore extends AppCompatActivity {
+public class ShowScore extends AppCompatActivity implements FirebaseAdapter.MyRankUpdate {
 RecyclerView rv;
 MediaPlayer mp;
 ArrayList<ListData> listData;
 FirebaseAdapter adapter;
 TextView hscore;
 String high="";
+String ranks="-";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ String high="";
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         listData = new ArrayList<>();
-        adapter = new FirebaseAdapter(listData);
+        adapter = new FirebaseAdapter(listData,this);
         rv.setAdapter(adapter);
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         high=str;
@@ -79,37 +81,36 @@ String high="";
                     }
                     hscore.setText("My Highscore: "+high);
                     rtd.child("score").child(mAuth.getUid()).child(mAuth.getCurrentUser().getDisplayName()).setValue(high);
+
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
         }
         rtd.child("score").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dss:dataSnapshot.getChildren()){
+                for (final DataSnapshot dss:dataSnapshot.getChildren()){
 rtd.child("score").child(dss.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         for (DataSnapshot ps:dataSnapshot.getChildren()){
-        listData.add(new ListData(ps.getKey(),Integer.parseInt(ps.getValue().toString())));
+        listData.add(new ListData(ps.getKey(),Integer.parseInt(ps.getValue().toString()),dss.getKey()));
             // Descending Order
             Collections.sort(listData, new Comparator<ListData>() {
-
                 @Override
                 public int compare(ListData o1, ListData o2) {
                     return (int)(o2.getScore()-o1.getScore());
                 }
             });
-        adapter.notifyDataSetChanged();
-        }}
+            adapter.notifyDataSetChanged();
+        }
+    }
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
-
     }
 });
                 }
@@ -117,8 +118,17 @@ rtd.child("score").child(dss.getKey()).addListenerForSingleValueEvent(new ValueE
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
+
+    }
+
+    @Override
+    public void updateRank(String ranking) {
+        TextView rankshow= findViewById(R.id.rankshow);
+        if (ranking==null){
+            ranking="-";
+        }
+        rankshow.setText("My Rank # "+ranking);
     }
 }

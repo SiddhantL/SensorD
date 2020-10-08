@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SensorD</string>
+    <string name="hint1">Tips:\nTap on the screen to\nchange directions</string>
+    <string name="hint2">Tips:\nAll cars have different\nspeed</string>
+    <string name="hint3">Tips:\nStay on center for better\nsafety </string>
+    <string name="hint4">Tips:\nDifficulty increases with\nScore</string>
+    <string name="hint5">Tips:\nThis game is Powered By\nSNL Tech</string>
 </resources>

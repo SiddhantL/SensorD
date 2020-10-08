@@ -5,8 +5,43 @@
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#ff1201"
     tools:context=".LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/texts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo2"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/sensor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/righteous_regular"
+            android:text="Sensor"
+            android:textColor="#fff"
+            android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/sensord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sensor"
+            android:fontFamily="@font/righteous_regular"
+            android:text="'D"
+            android:textColor="#000"
+            android:textSize="40dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logos" />
+
     <EditText
         android:id="@+id/EmailEdittext"
         android:layout_width="260dp"
@@ -14,12 +49,14 @@
         android:layout_above="@+id/PasswordeditText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@android:color/holo_orange_light"
         android:fontFamily="@font/montserrat"
         android:hint="Email"
+        android:includeFontPadding="true"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:paddingLeft="2dp"
+        android:textColor="#000000"
+        android:textColorHint="#000000" />
 
 
     <EditText
@@ -29,13 +66,15 @@
         android:layout_above="@+id/loginbtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@android:color/holo_orange_light"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Password"
+        android:includeFontPadding="true"
         android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:paddingLeft="2dp"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:textColorLink="#FFFFFF" />
 
     <Button
@@ -45,7 +84,7 @@
         android:layout_above="@+id/textView15"
         android:layout_alignEnd="@+id/EmailEdittext"
         android:layout_marginBottom="40dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@android:color/black"
         android:fontFamily="@font/montserrat"
         android:text="SIGN IN"
         android:textColor="#ffffff"
@@ -58,19 +97,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="33dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="67dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="225dp"
-            android:layout_height="85dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/splashy3" />
-    </RelativeLayout>
+        tools:layout_editor_absoluteY="67dp"/>
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView14l"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

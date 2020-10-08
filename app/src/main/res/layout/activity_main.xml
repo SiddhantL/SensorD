@@ -30,43 +30,4 @@
         android:text="Send"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="148dp"
-        android:layout_height="148dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:baselineAlignBottom="true"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
-
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_above="@+id/message"
-        android:layout_alignRight="@+id/send"
-        android:layout_alignEnd="@+id/send"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:visibility="visible" />
-    </ScrollView>
-
-    <TextView
-        android:id="@+id/direction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Center"
-        android:textColor="#070707"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
 </RelativeLayout>

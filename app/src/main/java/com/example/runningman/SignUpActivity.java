@@ -35,6 +35,7 @@ EditText userEmailEdit,userPasswordEdit,userName;
 //FireBase Authentication Field
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
+    TextView skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +44,23 @@ EditText userEmailEdit,userPasswordEdit,userName;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         createUser=(Button)findViewById(R.id.loginbtn);
+        createUser.setEnabled(true);
         MoveToLogin=(TextView)findViewById(R.id.textView15);
         userEmailEdit=(EditText)findViewById(R.id.EmailEdittext);
         userPasswordEdit=(EditText)findViewById(R.id.PasswordeditText);
         userName=(EditText)findViewById(R.id.nameEdittext);
+        skip=(TextView)findViewById(R.id.textView5);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUpActivity.this,PlayButton.class));
+            }
+        });
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
                     createUser.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            createUser.setEnabled(false);
                             Toast.makeText(SignUpActivity.this, "Creating Account", Toast.LENGTH_SHORT).show();
                             final String userNameS=userName.getText().toString().toString().trim();
                             String userEmailString=userEmailEdit.getText().toString().trim();
@@ -64,6 +74,7 @@ EditText userEmailEdit,userPasswordEdit,userName;
 
                                         }else {
                                             Toast.makeText(SignUpActivity.this, "Account could not be created", Toast.LENGTH_SHORT).show();
+                                        createUser.setEnabled(true);
                                         }
                                     }
                                 });
@@ -85,6 +96,7 @@ EditText userEmailEdit,userPasswordEdit,userName;
                             String userEmailString=userEmailEdit.getText().toString().trim();
                             String userPasswordString=userPasswordEdit.getText().toString().trim();
                             if (!TextUtils.isEmpty(userEmailString) && (!TextUtils.isEmpty(userPasswordString)) && (!TextUtils.isEmpty(userNameS))){
+                                createUser.setEnabled(false);
                                 mAuth.createUserWithEmailAndPassword(userEmailString,userPasswordString).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -94,8 +106,10 @@ EditText userEmailEdit,userPasswordEdit,userName;
                                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(userName.getText().toString()).build();
                                             mAuth.getCurrentUser().updateProfile(profileUpdates);
                                             startActivity(new Intent(SignUpActivity.this,PlayButton.class));
+                                            finish();
                                         }else {
                                             Toast.makeText(SignUpActivity.this, "Account could not be created", Toast.LENGTH_SHORT).show();
+                                       createUser.setEnabled(true);
                                         }
                                     }
                                 });

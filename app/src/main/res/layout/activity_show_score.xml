@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F44336"
+    android:background="#FDD20E"
     tools:context=".ShowScore">
 
     <ImageView
@@ -18,27 +18,33 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         android:elevation="5dp"
-        app:srcCompat="@drawable/play4" />
+        app:srcCompat="@drawable/play1" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/montserrat"
+        android:inputType="textMultiLine"
         android:text="TextView"
+        android:textAlignment="center"
         android:textColor="#050505"
-        android:textSize="35dp" />
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
+        android:layout_below="@id/rankshow"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/montserrat"
+        android:inputType="textMultiLine"
         android:text="Highscore Loading..."
+        android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="30dp" />
 
@@ -48,4 +54,18 @@
         android:layout_height="match_parent"
         android:layout_above="@id/retry"
         android:layout_below="@id/textView2" />
+
+    <TextView
+        android:id="@+id/rankshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat"
+        android:inputType="textMultiLine"
+        android:text="My Rank # "
+        android:textAlignment="center"
+        android:textColor="#Ff0000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 </RelativeLayout>
