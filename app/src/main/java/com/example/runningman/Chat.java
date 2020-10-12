@@ -166,6 +166,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                 @Override
                 public void run() {
                 /*    TextView direc=findViewById(R.id.direction);
+                    Toast.makeText(Chat.this, "Left", Toast.LENGTH_SHORT).show();
                     direc.setText("Left");*/
                 gameView.nogo();
                 }

@@ -10,20 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ShowScore"></activity>
-        <activity android:name=".PlayButton" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ShowScore" android:screenOrientation="portrait"/>
+        <activity android:name=".PlayButton" android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Select" />
-        <activity android:name=".Chat" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".Scan" />
+        <activity android:name=".Select" android:screenOrientation="portrait"/>
+        <activity android:name=".Chat" android:screenOrientation="portrait"/>
+        <activity android:name=".SignUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+        <activity android:name=".Scan" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

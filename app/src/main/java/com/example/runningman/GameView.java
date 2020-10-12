@@ -19,6 +19,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -513,12 +514,12 @@ public void crash(){
     }
 
     public void go() {
-        isMoving = false;
+        isMoving = true;
     }
 
     public void nogo() {
-        isMoving = true;
-    }
+        isMoving = false;
+         }
 
 }
 
