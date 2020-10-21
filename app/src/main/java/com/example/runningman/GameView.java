@@ -19,7 +19,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -37,7 +36,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int frameWidth = 140, frameHeight = 274;
     private int frameCount = 1;
     private int currentFrame = 0;
-    public Boolean lcar=false,ccar=false,rcar=false,allocate1=false,allocate2=false,allocate3=false;
+    public Boolean lcar=false,ccar=false,rcar=false,allocate1=false,allocate2=false,allocate3=false,control=true;
     public static Boolean crash=false;
     private float x = 0, enemyyl = -1,enemmyc=-1,enemmyr=-1,pav=0;
     private int speeda=14,speedb=16,speedc=18;
@@ -87,7 +86,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void update() {
         message="Score: "+Integer.toString(scoregame);
-                if (lcar) {
+        if (lcar) {
             if (manXPos >= getWidth() / 6 - frameWidth - 70 && manXPos <= getWidth() / 6 + frameWidth / 2 - 70 && enemyyl >= getHeight() - 2 * frameHeight - 50 && enemyyl <= getHeight() - 50) {
                 message = "CRASH";
                 MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.crash);
@@ -134,16 +133,16 @@ public class GameView extends SurfaceView implements Runnable {
             time=3;
         if (enemyyl>-1)
             if (lcar)
-            enemyyl = enemyyl + speeda+time;
+                enemyyl = enemyyl + speeda+time;
         if (enemmyc>-1)
             if (ccar)
-            enemmyc = enemmyc + speedb+time;
+                enemmyc = enemmyc + speedb+time;
         if (enemmyr>-1)
             if (rcar)
-            enemmyr = enemmyr + speedc+time;
-if (pav>=getHeight()/2){
-    pav=0;
-}
+                enemmyr = enemmyr + speedc+time;
+        if (pav>=getHeight()/2){
+            pav=0;
+        }
         if (x >= getHeight() / 4) {
             x = x - (getHeight() / 4);
         }
@@ -342,7 +341,7 @@ if (pav>=getHeight()/2){
             final int min3 = 0;
             final int max3 = 10;
             final int random3 = new Random().nextInt((max3 - min3) + 1) + min3;
-         if (scoregame<1000) {
+            if (scoregame<1000) {
                 switch (random) {
                     case 1:
                         if (!(ccar && rcar))
@@ -362,120 +361,120 @@ if (pav>=getHeight()/2){
                 ccar=true;
                 rcar=true;
             }else{
-             switch (random) {
-                 case 1:
-                     if (!(ccar && rcar))
-                         lcar = true;
-                     break;
-                 case 2:
-                     if (!(lcar && rcar))
-                         ccar = true;
-                     break;
-                 case 3:
-                     if (!(lcar && ccar))
-                         rcar = true;
-                     break;
-             }
-         }
-                spawn();
+                switch (random) {
+                    case 1:
+                        if (!(ccar && rcar))
+                            lcar = true;
+                        break;
+                    case 2:
+                        if (!(lcar && rcar))
+                            ccar = true;
+                        break;
+                    case 3:
+                        if (!(lcar && ccar))
+                            rcar = true;
+                        break;
+                }
+            }
+            spawn();
             whereToDraw.set((int) manXPos+70, (int) getHeight() - frameHeight - 50, (int) manXPos + frameWidth+70, (int) getHeight() - 50);
             //   manageCurrentFrame();
             canvas.drawBitmap(bitmapRunningMan, frameToDraw, whereToDraw, null);
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
-public void spawn() {
-    if (lcar) {
-        if (!allocate1) {
-            final int min = 1;
-            final int max = 3;
-            final int random = new Random().nextInt((max - min) + 1) + min;
-            switch (random){
-                case 1:
-                    bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                    bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                    speeda=15;
-                    break;
-                case 2:
-                    bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                    bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                    speeda=17;
-                    break;
-                case 3:
-                    bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                    bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                    speeda=13;
-                    break;
+    public void spawn() {
+        if (lcar) {
+            if (!allocate1) {
+                final int min = 1;
+                final int max = 3;
+                final int random = new Random().nextInt((max - min) + 1) + min;
+                switch (random){
+                    case 1:
+                        bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
+                        speeda=15;
+                        break;
+                    case 2:
+                        bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
+                        speeda=17;
+                        break;
+                    case 3:
+                        bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
+                        speeda=13;
+                        break;
+                }
+                allocate1=true;
             }
-        allocate1=true;
+            whereToDrawEnemyleft.set((int)((getWidth()) / 6)+35 - frameWidth / 2 , (int) enemyyl, (int) ((getWidth()) / 6)+35+ frameWidth/2, (int) enemyyl + frameHeight);
+            canvas.drawBitmap(bmap1, frameToDraw, whereToDrawEnemyleft, null);
         }
-        whereToDrawEnemyleft.set((int)((getWidth()) / 6)+35 - frameWidth / 2 , (int) enemyyl, (int) ((getWidth()) / 6)+35+ frameWidth/2, (int) enemyyl + frameHeight);
-        canvas.drawBitmap(bmap1, frameToDraw, whereToDrawEnemyleft, null);
-    }
-    if (ccar) {
-        whereToDrawEnemyCenter.set((int) getWidth() / 2+ 15 - frameWidth / 2 , (int) enemmyc, (int)getWidth() / 2+ 15+ frameWidth / 2, (int) enemmyc + frameHeight);
-       if (!allocate2) {
-           final int min = 1;
-           final int max = 3;
-           final int random = new Random().nextInt((max - min) + 1) + min;
-           switch (random){
-               case 1:
-                   bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                   bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                   speedb=15;
-                   break;
-               case 2:
-                   bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                   bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                   speedb=17;
-                   break;
-               case 3:
-                   bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                   bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                   speedb=13;
-                   break;
-           }
-       allocate2=true;
-       }
-        canvas.drawBitmap(bmap2, frameToDraw, whereToDrawEnemyCenter, null);
-        }
-    if (rcar) {
-        whereToDrawEnemyRight.set((int)5 * getWidth() / 6 - frameWidth / 2, (int) enemmyr, (int) 5 * getWidth() / 6 + frameWidth / 2, (int) enemmyr + frameHeight);
-        if (!allocate3) {
-           final int min = 1;
-            final int max = 3;
-            final int random = new Random().nextInt((max - min) + 1) + min;
-            switch (random){
-                case 1:
-                    bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                    bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                    speedc=15;
-                    break;
-                case 2:
-                    bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                    bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                    speedc=17;
-                    break;
-                case 3:
-                    bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                    bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                    speedc=13;
-                    break;
+        if (ccar) {
+            whereToDrawEnemyCenter.set((int) getWidth() / 2+ 15 - frameWidth / 2 , (int) enemmyc, (int)getWidth() / 2+ 15+ frameWidth / 2, (int) enemmyc + frameHeight);
+            if (!allocate2) {
+                final int min = 1;
+                final int max = 3;
+                final int random = new Random().nextInt((max - min) + 1) + min;
+                switch (random){
+                    case 1:
+                        bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
+                        speedb=15;
+                        break;
+                    case 2:
+                        bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
+                        speedb=17;
+                        break;
+                    case 3:
+                        bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
+                        speedb=13;
+                        break;
+                }
+                allocate2=true;
             }
-        allocate3=true;
+            canvas.drawBitmap(bmap2, frameToDraw, whereToDrawEnemyCenter, null);
         }
-        canvas.drawBitmap(bitmapRunningEnemy2, frameToDraw, whereToDrawEnemyRight, null);
-     }
+        if (rcar) {
+            whereToDrawEnemyRight.set((int)5 * getWidth() / 6 - frameWidth / 2, (int) enemmyr, (int) 5 * getWidth() / 6 + frameWidth / 2, (int) enemmyr + frameHeight);
+            if (!allocate3) {
+                final int min = 1;
+                final int max = 3;
+                final int random = new Random().nextInt((max - min) + 1) + min;
+                switch (random){
+                    case 1:
+                        bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
+                        speedc=15;
+                        break;
+                    case 2:
+                        bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
+                        speedc=17;
+                        break;
+                    case 3:
+                        bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
+                        speedc=13;
+                        break;
+                }
+                allocate3=true;
+            }
+            canvas.drawBitmap(bitmapRunningEnemy2, frameToDraw, whereToDrawEnemyRight, null);
+        }
     }
-public void crash(){
-    synchronized (ourHolder) {
-        gameThread.interrupt();
-        Intent gameover=new Intent(contexts,ShowScore.class);
-        gameover.putExtra("score",Integer.toString(scoregame));
-        contexts.startActivity(gameover);
-        ((Activity) contexts).finish();
+    public void crash(){
+        synchronized (ourHolder) {
+            gameThread.interrupt();
+            Intent gameover=new Intent(contexts,ShowScore.class);
+            gameover.putExtra("score",Integer.toString(scoregame));
+            contexts.startActivity(gameover);
+            ((Activity) contexts).finish();
+        }
     }
-}
     public void pause() {
         playing = false;
         mp.pause();
@@ -519,7 +518,6 @@ public void crash(){
 
     public void nogo() {
         isMoving = false;
-         }
+    }
 
 }
-
