@@ -87,7 +87,7 @@ public class GameView extends SurfaceView implements Runnable {
     public void update() {
         message="Score: "+Integer.toString(scoregame);
         if (lcar) {
-            if (manXPos >= getWidth() / 6 - frameWidth - 70 && manXPos <= getWidth() / 6 + frameWidth / 2 - 70 && enemyyl >= getHeight() - 2 * frameHeight - 50 && enemyyl <= getHeight() - 50) {
+            if (manXPos >= getWidth() / 6 - frameWidth - return_int_ratiow(70) && manXPos <= getWidth() / 6 + frameWidth / 2 - return_int_ratiow(70) && enemyyl >= getHeight() - 2 * frameHeight - return_int_ratioh(50) && enemyyl <= getHeight() - return_int_ratioh(50)) {
                 message = "CRASH";
                 MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.crash);
                 mp2.start();
@@ -99,7 +99,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
         if (ccar) {
-            if (manXPos >= getWidth() / 2 - 2 * frameWidth + 15 && manXPos <= getWidth() / 2 + 15 && enemmyc >= getHeight() - 2 * frameHeight - 50 && enemmyc <= getHeight() - 50) {
+            if (manXPos >= getWidth() / 2 - 2 * frameWidth + return_int_ratiow(15) && manXPos <= getWidth() / 2 + return_int_ratiow(15) && enemmyc >= getHeight() - 2 * frameHeight - return_int_ratioh(50) && enemmyc <= getHeight() - return_int_ratioh(50)) {
                 message = "CRASH";
                 MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.crash);
                 mp2.start();
@@ -111,7 +111,7 @@ public class GameView extends SurfaceView implements Runnable {
 
             }
         }if (rcar) {
-            if (manXPos >= (int) 5 * getWidth() / 6 - 2 * frameWidth && manXPos <= (int) 5 * getWidth() / 6 && enemmyr >= getHeight() - 2 * frameHeight - 50 && enemmyr <= getHeight() - 50) {
+            if (manXPos >= (int) 5 * getWidth() / 6 - 2 * frameWidth && manXPos <= (int) 5 * getWidth() / 6 && enemmyr >= getHeight() - 2 * frameHeight - return_int_ratioh(50) && enemmyr <= getHeight() - return_int_ratioh(50)) {
                 message = "CRASH";
                 MediaPlayer mp2=MediaPlayer.create(getContext(),R.raw.crash);
                 mp2.start();
@@ -122,9 +122,9 @@ public class GameView extends SurfaceView implements Runnable {
                 scoregame = 0;
             }
         }
-        x = x + 10;
-        pav=pav+10;
-        enemyYPos = enemyYPos + 2;
+        x = x + return_int_ratioh(10);
+        pav=pav+return_int_ratioh(10);
+        enemyYPos = enemyYPos + return_int_ratioh(2);
         if (scoregame>2000)
             time=1;
         else if (scoregame>3000)
@@ -164,9 +164,9 @@ public class GameView extends SurfaceView implements Runnable {
         if (isMoving) {
             if (manXPos > getWidth() / 2) ;
             manXPos = manXPos + runSpeedPerSecond / fps +time;
-            if (manXPos > getWidth() - frameWidth - 140) {
+            if (manXPos > getWidth() - frameWidth - return_int_ratiow(140)) {
                 //Go to next line on end
-                manXPos = getWidth() - frameWidth - 140;
+                manXPos = getWidth() - frameWidth - return_int_ratiow(140);
             }
             if (manYPos + frameHeight > getHeight()) {
             }
@@ -180,7 +180,7 @@ public class GameView extends SurfaceView implements Runnable {
                     manXPos = 0;
                 }
                 if (manYPos + frameHeight > getHeight()) {
-                    manYPos = 10;
+                    manYPos = return_int_ratioh(10);
                 }
             }
 
@@ -259,76 +259,82 @@ public class GameView extends SurfaceView implements Runnable {
             Paint paint2 = new Paint();
             paint2.setColor(Color.WHITE);
             canvas.drawRect(
-                    70,
+                    return_int_ratiow(70),
                     0,
-                    getWidth() - 70,
+                    getWidth() - return_int_ratiow(70),
                     getHeight(), paint);
             paint.setColor(Color.GREEN);
 
             canvas.drawRect(
                     (getWidth() / 3),
-                    -(getHeight() / 4) + x+50,
-                    30 + (getWidth() / 3),
+                    -(getHeight() / 4) + x+return_int_ratioh(50),
+                    return_int_ratiow(30) + (getWidth() / 3),
                     0 + x, paint2);
             canvas.drawRect(
                     (getWidth() / 3),
-                    50 + x,
-                    30 + (getWidth() / 3),
+                    return_int_ratioh(50) + x,
+                    return_int_ratiow(30) + (getWidth() / 3),
                     (getHeight() / 4) + x, paint2);
             canvas.drawRect(
                     (getWidth() / 3),
-                    x + 50 + (getHeight() / 4),
-                    30 + (getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4),
+                    return_int_ratiow(30) + (getWidth() / 3),
                     x + (getHeight() / 4) * 2, paint2);
             canvas.drawRect(
                     (getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 2,
-                    30 + (getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 2,
+                    return_int_ratiow(30) + (getWidth() / 3),
                     x + (getHeight() / 4) * 3, paint2);
             canvas.drawRect(
                     (getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 3,
-                    30 + (getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 4, paint2);
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 3,
+                    return_int_ratiow(30) + (getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 4, paint2);
 
 
             canvas.drawRect(
                     (2 * getWidth() / 3),
-                    -(getHeight() / 4) + x+50,
-                    30 + (2 * getWidth() / 3),
+                    -(getHeight() / 4) + x+return_int_ratioh(50),
+                    return_int_ratiow(30) + (2 * getWidth() / 3),
                     0 + x, paint2);
             canvas.drawRect(
                     (2 * getWidth() / 3),
-                    50 + x,
-                    30 + (2 * getWidth() / 3),
+                    return_int_ratioh(50) + x,
+                    return_int_ratiow(30) + (2 * getWidth() / 3),
                     (getHeight() / 4) + x, paint2);
             canvas.drawRect(
                     (2 * getWidth() / 3),
-                    x + 50 + (getHeight() / 4),
-                    30 + (2 * getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4),
+                    return_int_ratiow(30) + (2 * getWidth() / 3),
                     x + (getHeight() / 4) * 2, paint2);
             canvas.drawRect(
                     (2 * getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 2,
-                    30 + (2 * getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 2,
+                    return_int_ratiow(30) + (2 * getWidth() / 3),
                     x + (getHeight() / 4) * 3, paint2);
             canvas.drawRect(
                     (2 * getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 3,
-                    30 + (2 * getWidth() / 3),
-                    x + 50 + (getHeight() / 4) * 4, paint2);
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 3,
+                    return_int_ratiow(30) + (2 * getWidth() / 3),
+                    x + return_int_ratioh(50) + (getHeight() / 4) * 4, paint2);
 
-            enemyXPos = ((getWidth()) / 6) - frameWidth / 2 +35;
+            enemyXPos = ((getWidth()) / 6) - frameWidth / 2 +return_int_ratioh(35);
             Paint painter = new Paint();
             painter.setColor(Color.WHITE);
             //canvas.drawPaint(painter);
-            canvas.drawRect(20,5,350,80,painter);
+            canvas.drawRect(return_float_ratiow(20),return_float_ratioh(5),return_float_ratiow(350),return_float_ratioh(80),painter);
             painter.setColor(Color.BLACK);
-            painter.setTextSize(50);
+            painter.setTextSize(return_int_ratiow(50));
             scoregame=scoregame+1;
-            canvas.drawText(/*"Score: "+Integer.toString(scoregame)*/message, 45, 60, painter);
-            if (enemyyl==-1&&enemmyc==-1&&enemmyr==-1)
-                manXPos=getWidth()/2;
+            canvas.drawText(/*"Score: "+Integer.toString(scoregame)*/message, return_int_ratiow(45), return_int_ratioh(60), painter);
+            if (enemyyl==-1&&enemmyc==-1&&enemmyr==-1) {
+                manXPos = getWidth() / 2;
+                frameHeight=return_int_ratioh(274);
+                frameWidth=return_int_ratiow(140);
+                runSpeedPerSecond = return_int_ratioh(500);
+                manXPos = return_int_ratioh(10); manYPos = return_int_ratioh(10);
+                enemyXPos = return_int_ratioh(10); enemyYPos = return_int_ratioh(10);
+                speeda=return_int_ratioh(14);speedb=return_int_ratioh(16);speedc=return_int_ratioh(18);}
             if (enemyyl==-1)
                 enemyyl=0;
             if (enemmyc==-1)
@@ -377,7 +383,7 @@ public class GameView extends SurfaceView implements Runnable {
                 }
             }
             spawn();
-            whereToDraw.set((int) manXPos+70, (int) getHeight() - frameHeight - 50, (int) manXPos + frameWidth+70, (int) getHeight() - 50);
+            whereToDraw.set((int) manXPos+return_int_ratiow(70), (int) getHeight() - frameHeight - return_int_ratioh(50), (int) manXPos + frameWidth+return_int_ratiow(70), (int) getHeight() - return_int_ratioh(50));
             //   manageCurrentFrame();
             canvas.drawBitmap(bitmapRunningMan, frameToDraw, whereToDraw, null);
             ourHolder.unlockCanvasAndPost(canvas);
@@ -392,27 +398,27 @@ public class GameView extends SurfaceView implements Runnable {
                 switch (random){
                     case 1:
                         bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                        speeda=15;
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, 140 * frameCount, 274, false);
+                        speeda=return_int_ratioh(15);
                         break;
                     case 2:
                         bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                        speeda=17;
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, 140 * frameCount, 274, false);
+                        speeda=return_int_ratioh(17);
                         break;
                     case 3:
                         bmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                        bmap1 = Bitmap.createScaledBitmap(bmap1, frameWidth * frameCount, frameHeight, false);
-                        speeda=13;
+                        bmap1 = Bitmap.createScaledBitmap(bmap1, 140 * frameCount, 274, false);
+                        speeda=return_int_ratioh(13);
                         break;
                 }
                 allocate1=true;
             }
-            whereToDrawEnemyleft.set((int)((getWidth()) / 6)+35 - frameWidth / 2 , (int) enemyyl, (int) ((getWidth()) / 6)+35+ frameWidth/2, (int) enemyyl + frameHeight);
+            whereToDrawEnemyleft.set((int)((getWidth()) / 6)+return_int_ratiow(35) - frameWidth / 2 , (int) enemyyl, (int) ((getWidth()) / 6)+return_int_ratiow(35)+ frameWidth/2, (int) enemyyl + frameHeight);
             canvas.drawBitmap(bmap1, frameToDraw, whereToDrawEnemyleft, null);
         }
         if (ccar) {
-            whereToDrawEnemyCenter.set((int) getWidth() / 2+ 15 - frameWidth / 2 , (int) enemmyc, (int)getWidth() / 2+ 15+ frameWidth / 2, (int) enemmyc + frameHeight);
+            whereToDrawEnemyCenter.set((int) getWidth() / 2+ return_int_ratiow(15) - frameWidth / 2 , (int) enemmyc, (int)getWidth() / 2+ return_int_ratiow(15)+ frameWidth / 2, (int) enemmyc + frameHeight);
             if (!allocate2) {
                 final int min = 1;
                 final int max = 3;
@@ -420,18 +426,18 @@ public class GameView extends SurfaceView implements Runnable {
                 switch (random){
                     case 1:
                         bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                        speedb=15;
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, 140 * frameCount, 274, false);
+                        speedb=return_int_ratioh(15);
                         break;
                     case 2:
                         bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                        speedb=17;
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, 140 * frameCount, 274, false);
+                        speedb=return_int_ratioh(17);
                         break;
                     case 3:
                         bmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                        bmap2 = Bitmap.createScaledBitmap(bmap2, frameWidth * frameCount, frameHeight, false);
-                        speedb=13;
+                        bmap2 = Bitmap.createScaledBitmap(bmap2, 140 * frameCount, 274, false);
+                        speedb=return_int_ratioh(13);
                         break;
                 }
                 allocate2=true;
@@ -447,23 +453,23 @@ public class GameView extends SurfaceView implements Runnable {
                 switch (random){
                     case 1:
                         bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy);
-                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                        speedc=15;
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, 140 * frameCount, 274, false);
+                        speedc=return_int_ratioh(15);
                         break;
                     case 2:
                         bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_2);
-                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                        speedc=17;
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, 140 * frameCount, 274, false);
+                        speedc=return_int_ratioh(17);
                         break;
                     case 3:
                         bmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.running_enemy_3);
-                        bmap3 = Bitmap.createScaledBitmap(bmap3, frameWidth * frameCount, frameHeight, false);
-                        speedc=13;
+                        bmap3 = Bitmap.createScaledBitmap(bmap3, 140 * frameCount, 274, false);
+                        speedc=return_int_ratioh(13);
                         break;
                 }
                 allocate3=true;
             }
-            canvas.drawBitmap(bitmapRunningEnemy2, frameToDraw, whereToDrawEnemyRight, null);
+          canvas.drawBitmap(bmap3, frameToDraw, whereToDrawEnemyRight, null);
         }
     }
     public void crash(){
@@ -513,11 +519,32 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void go() {
-        isMoving = true;
-    }
-
-    public void nogo() {
         isMoving = false;
     }
 
+    public void nogo() {
+        isMoving = true;
+    }
+int ratioh,ratiow;
+    float fratioh,fratiow;
+    int return_int_ratioh(int x){
+        if (getHeight()==0){return x;}
+ ratioh=Math.round(x/(2030f/getHeight()));
+ return ratioh;
+}
+float return_float_ratioh(float x){
+    if (getHeight()==0){return x;}
+    fratioh=Math.round(x/(2030f/getHeight()));
+    return fratioh;
+    }
+    int return_int_ratiow(int x){
+        if (getWidth()==0){return x;}
+        ratiow=Math.round(x/(1080f/getWidth()));
+return ratiow;
+    }
+    float return_float_ratiow(float x){
+        if (getWidth()==0){return x;}
+        fratiow=Math.round(x/(1080f/getWidth()));
+        return fratiow;
+    }
 }
