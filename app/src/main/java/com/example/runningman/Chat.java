@@ -23,11 +23,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import androidx.appcompat.app.AppCompatActivity;
 import me.aflak.bluetooth.Bluetooth;
 
 public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCallback {
     private String name;
+    private FirebaseAnalytics mFirebaseAnalytics;
     private Bluetooth b;/*
     private EditText message;
     private Button send;
@@ -40,6 +43,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         gameView = new GameView(this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(gameView);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

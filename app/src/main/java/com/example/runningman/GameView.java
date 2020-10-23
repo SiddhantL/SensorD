@@ -20,6 +20,8 @@ import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Random;
 
 public class GameView extends SurfaceView implements Runnable {
@@ -53,8 +55,10 @@ public class GameView extends SurfaceView implements Runnable {
     private RectF whereToDrawEnemyleft = new RectF(enemyXPos, manYPos, enemyYPos + frameWidth, frameHeight);
     private RectF whereToDrawEnemyCenter = new RectF(enemyXPos, manYPos, enemyYPos + frameWidth, frameHeight);
     private RectF whereToDrawEnemyRight = new RectF(enemyXPos, manYPos, enemyYPos + frameWidth, frameHeight);
+    private FirebaseAnalytics mFirebaseAnalytics;
     public GameView(Context context) {
         super(context);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         contexts=context;
         mp=MediaPlayer.create(getContext(),R.raw.bgm);
         mp.start();
@@ -95,7 +99,7 @@ public class GameView extends SurfaceView implements Runnable {
                 pause();
                 mp.pause();
                 crash=true;
-                scoregame = 0;
+               // scoregame = 0;
             }
         }
         if (ccar) {
@@ -107,7 +111,7 @@ public class GameView extends SurfaceView implements Runnable {
                 pause();
                 mp.pause();
                 crash=true;
-                scoregame = 0;
+                //scoregame = 0;
 
             }
         }if (rcar) {
@@ -119,18 +123,27 @@ public class GameView extends SurfaceView implements Runnable {
                 pause();
                 mp.pause();
                 crash=true;
-                scoregame = 0;
+              //  scoregame = 0;
             }
         }
         x = x + return_int_ratioh(10);
         pav=pav+return_int_ratioh(10);
         enemyYPos = enemyYPos + return_int_ratioh(2);
-        if (scoregame>2000)
+        if (scoregame<1000){
+            time=-1;
+        }else if (scoregame<2000){
+            time=0;
+        }else if (scoregame>2000 & scoregame<8000){
+            time=Math.round(Math.floor(scoregame/1000))-1;
+        }else if(scoregame>8000){
+            time=6;
+        }
+      /*  if (scoregame>2000)
             time=1;
         else if (scoregame>3000)
             time=2;
         else if (scoregame>4000)
-            time=3;
+            time=3;*/
         if (enemyyl>-1)
             if (lcar)
                 enemyyl = enemyyl + speeda+time;
@@ -255,7 +268,15 @@ public class GameView extends SurfaceView implements Runnable {
                     getHeight() + pav, p);
 
             Paint paint = new Paint();
-            paint.setColor(Color.GRAY);
+            if (scoregame<2000) {
+                paint.setColor(Color.GRAY);
+            }else if (scoregame<3000){
+                paint.setColor(Color.rgb(112, 134, 158));
+            }else if(scoregame<4000){
+                paint.setColor(Color.rgb(14, 139, 14));
+            }else{
+                paint.setColor(Color.rgb(105, 54, 158));
+            }
             Paint paint2 = new Paint();
             paint2.setColor(Color.WHITE);
             canvas.drawRect(
@@ -347,7 +368,25 @@ public class GameView extends SurfaceView implements Runnable {
             final int min3 = 0;
             final int max3 = 10;
             final int random3 = new Random().nextInt((max3 - min3) + 1) + min3;
-            if (scoregame<1000) {
+            if (scoregame<25){
+
+            }else if(scoregame<50){
+                switch (random) {
+                    case 1:
+                        if (!ccar && !rcar)
+                            lcar = true;
+                        break;
+                    case 2:
+                        if (!lcar && !rcar)
+                            ccar = true;
+                        break;
+                    case 3:
+                        if (!lcar && !ccar)
+                            rcar = true;
+                        break;
+                }
+            }
+            else if (scoregame<1000) {
                 switch (random) {
                     case 1:
                         if (!(ccar && rcar))
@@ -362,7 +401,11 @@ public class GameView extends SurfaceView implements Runnable {
                             rcar = true;
                         break;
                 }
-            }else if (random3==8 && scoregame>1500 && ((enemmyc>enemmyr+2*frameHeight) ||(enemmyc>enemyyl+2*frameHeight))){
+            }else if (random3==8 && scoregame>=1000&& scoregame<3000&& ((enemmyr>getHeight()/2) ||(enemyyl>getHeight()/2) || (enemmyc>getHeight()/2))){
+                lcar=true;
+                ccar=true;
+                rcar=true;
+            }else if (random3==8 && scoregame>=3000 && ((enemmyc>enemmyr+2*frameHeight) ||(enemmyc>enemyyl+2*frameHeight))){
                 lcar=true;
                 ccar=true;
                 rcar=true;
@@ -381,6 +424,7 @@ public class GameView extends SurfaceView implements Runnable {
                             rcar = true;
                         break;
                 }
+
             }
             spawn();
             whereToDraw.set((int) manXPos+return_int_ratiow(70), (int) getHeight() - frameHeight - return_int_ratioh(50), (int) manXPos + frameWidth+return_int_ratiow(70), (int) getHeight() - return_int_ratioh(50));
@@ -388,6 +432,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(bitmapRunningMan, frameToDraw, whereToDraw, null);
             ourHolder.unlockCanvasAndPost(canvas);
         }
+
     }
     public void spawn() {
         if (lcar) {
@@ -505,7 +550,7 @@ public class GameView extends SurfaceView implements Runnable {
             enemyyl=-1;
             enemmyc=-1;
             enemmyr=-1;
-            scoregame=0;
+            //scoregame=0;
             lcar=false;ccar=false;rcar=false;
             allocate1=false;allocate2=false;allocate3=false;
             manXPos=getWidth()/2;
@@ -519,11 +564,11 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void go() {
-        isMoving = false;
+        isMoving = true;
     }
 
     public void nogo() {
-        isMoving = true;
+        isMoving = false;
     }
 int ratioh,ratiow;
     float fratioh,fratiow;
