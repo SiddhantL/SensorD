@@ -7,4 +7,5 @@ This car game tries to replicate the feeling of the classic old arcade games whe
 <img src="https://play-lh.googleusercontent.com/gmnXQFSK1e4LL8_jZ_xBut3hMfv3S1zg9lxl_qg8YVcbMtESyEW-zzDOWd71u1_slwQ=w720-h310-rw"/>
 <img src="https://play-lh.googleusercontent.com/bSzJXeqQtEsbN3Y-RejNH95UEp7qZs38I028GSTW6kcH9qaugMEx7Uu0JpN3VAWeEao=w720-h310-rw"/>
 <img src="https://play-lh.googleusercontent.com/qLhi5ehzWk8mPrwqnlxPet9BPC-KGl_nmaJDaGMijyX6_BqXaYK2A1AyATdw-mb_l64=w720-h310-rw"/>
-<img src="https://play-lh.googleusercontent.com/D-mE8hncGvig0DvVGhyZzCf1kXeP9Trnj1MHqrDf-xyOXMZESS74avf9yR3mztRS1Jo=w720-h310-rw"/>
+<img src="https://play-lh.googleusercontent.com/D-mE8hncGvig0DvVGhyZzCf1kXeP9Trnj1MHqrDf-xyOXMZESS74avf9yR3mztRS1Jo=w720-h310-rw"/> <br>
+ [Try it Now!](https://play.google.com/store/apps/details?id=com.siddhantlad.sensord&hl=en_IN&gl=US)
